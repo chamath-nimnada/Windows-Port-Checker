@@ -1,0 +1,121 @@
+﻿<Window x:Class="Windows_Port_Checker.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Windows_Port_Checker"
+        mc:Ignorable="d"
+        Title="Windows Port Scanner"
+        Height="550"
+        Width="450"
+        Background="#f4f4f4"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen"
+        Icon="Resources/windows-port-checker.ico">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="48*"/>
+            <ColumnDefinition Width="9*"/>
+            <ColumnDefinition Width="236*"/>
+            <ColumnDefinition Width="157*"/>
+        </Grid.ColumnDefinitions>
+        <Border Margin="20,20,20,20" Background="White" CornerRadius="10" Padding="20" 
+                Effect="{DynamicResource DropShadowEffect}" Grid.ColumnSpan="4">
+            <StackPanel>
+                <!-- Title -->
+                <TextBlock Text="Windows Port Scanner"
+                           FontSize="28"
+                           FontWeight="Bold"
+                           Foreground="#222"
+                           Margin="0,0,0,20"
+                           TextAlignment="Center"
+                           Padding="10px"/>
+
+                <!-- Top Row Buttons -->
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,20">
+                    <Button Content="Refresh Ports"
+                            Width="200"
+                            Height="35"
+                            Margin="0,0,10,0"
+                            Click="RefreshButton_Click"
+                            Background="#0078D7"
+                            Foreground="White"
+                            BorderThickness="0"
+                            FontWeight="SemiBold"
+                            Cursor="Hand"/>
+                </StackPanel>
+
+                <!-- Ports Display Section -->
+                <Grid Margin="0,0,0,20">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="3*"/>
+                        <ColumnDefinition Width="5"/>
+                        <ColumnDefinition Width="7*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <!-- Left Side - Free Ports -->
+                    <StackPanel Grid.Column="0">
+                        <TextBlock Text="Free Ports:" 
+                                   FontSize="14" 
+                                   FontWeight="SemiBold" 
+                                   Margin="0,0,0,5"
+                                   Foreground="#28A745"/>
+                        <ListBox Name="FreePortsList"
+                                 Height="100"
+                                 Background="#FAFAFA"
+                                 BorderBrush="#28A745"
+                                 BorderThickness="1"
+                                 FontSize="12"
+                                 Foreground="#333"/>
+                    </StackPanel>
+
+                    <!-- Right Side - Busy Ports -->
+                    <StackPanel Grid.Column="2">
+                        <TextBlock Text="Busy Ports:" 
+                                   FontSize="14" 
+                                   FontWeight="SemiBold" 
+                                   Margin="0,0,0,5"
+                                   Foreground="#DC3545"/>
+                        <ListBox Name="BusyPortsList"
+                                 Height="100"
+                                 Background="#FAFAFA"
+                                 BorderBrush="#DC3545"
+                                 BorderThickness="1"
+                                 FontSize="12"
+                                 Foreground="#333"/>
+                    </StackPanel>
+                </Grid>
+
+                <!-- Search Section -->
+                <TextBlock Text="🔍 Search a Port Number:" FontSize="16" FontWeight="SemiBold" Margin="0,0,0,5"/>
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,15">
+                    <TextBox Name="PortSearchBox"
+                             Width="200"
+                             Height="30"
+                             Margin="0,0,10,0"
+                             FontSize="14"
+                             Padding="5"
+                             BorderBrush="#0078D7"
+                             BorderThickness="1"/>
+                    <Button Content="Check Status"
+                            Width="160"
+                            Height="30"
+                            Click="SearchPort_Click"
+                            Background="#28A745"
+                            Foreground="White"
+                            BorderThickness="0"
+                            Cursor="Hand"
+                            FontWeight="SemiBold"/>
+                </StackPanel>
+
+                <!-- Result Text -->
+                <Border Background="#EEF6FF" CornerRadius="6" Padding="10" BorderBrush="#0078D7" BorderThickness="1">
+                    <TextBlock Name="PortStatusText"
+                               FontSize="14"
+                               Foreground="#222"
+                               TextWrapping="Wrap"/>
+                </Border>
+            </StackPanel>
+        </Border>
+    </Grid>
+</Window>
